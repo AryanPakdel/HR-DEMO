@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 600 python3 -m pip install --quiet --disable-pip-version-check fastapi \"uvicorn[standard]\" python-multipart openpyxl scikit-learn)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(python3 -c \"import fastapi, uvicorn, multipart, openpyxl, sklearn; print\\('all ok', sklearn.__version__\\)\")",
+      "Bash(curl -s -X POST http://127.0.0.1:8011/api/predict/time-to-fill -H 'Content-Type: application/json' -d '{\"session_id\":\"x\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\")",
+      "Bash(python3 -c ' *)",
+      "Bash(timeout 300 python3 /tmp/claude-1000/-home-aryan-Desktop----------/fe50dcde-cc22-4529-81a9-e70dc489bb41/scratchpad/test_api.py)",
+      "Bash(python3 -c \"import playwright; print\\('playwright ok'\\)\")",
+      "Bash(timeout 500 python3 -m pip install --quiet --disable-pip-version-check playwright)",
+      "Bash(python3 -c \"import playwright; print\\('installed'\\)\")",
+      "Bash(timeout 500 python3 -m playwright install chromium)",
+      "Bash(pkill -f \"uvicorn backend.main:app\")",
+      "Bash(nohup python3 -m uvicorn backend.main:app --host 127.0.0.1 --port 8011 --log-level warning)",
+      "Bash(curl -s http://127.0.0.1:8011/api/health)",
+      "Bash(timeout 300 python3 /tmp/claude-1000/-home-aryan-Desktop----------/fe50dcde-cc22-4529-81a9-e70dc489bb41/scratchpad/test_backend.py)",
+      "Bash(nohup python3 run.py)",
+      "Bash(python3 -c \"import time;time.sleep\\(0.5\\)\")",
+      "Bash(curl -s http://127.0.0.1:8000/api/health)",
+      "Bash(python3 -)"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=HR Analytics Dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=hrapp
+Group=hrapp
+WorkingDirectory=/opt/hr-dashboard
+ExecStart=/opt/hr-dashboard/.venv/bin/uvicorn backend.main:app --host 127.0.0.1 --port 8000 --workers 1
+Restart=always
+RestartSec=3
+
+# سخت‌گیری امنیتی پایه — سرویس فقط به پوشه پروژه دسترسی نوشتن دارد
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/hr-dashboard
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
